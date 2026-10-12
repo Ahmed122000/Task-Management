@@ -62,7 +62,7 @@ public class Task {
         updatedAt = Instant.now();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
