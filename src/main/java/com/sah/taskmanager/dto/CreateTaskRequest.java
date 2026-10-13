@@ -1,7 +1,6 @@
 package com.sah.taskmanager.dto;
 
 import com.sah.taskmanager.entity.TaskStatus;
-import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Max;
@@ -14,26 +13,20 @@ import java.time.LocalDate;
 
 public class CreateTaskRequest {
 
-    @Column(name = "title", nullable = false, length = 200)
     @Size(max = 200)
     @NotBlank
     private String title;
 
-    @Column(name = "content")
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
     private TaskStatus status = TaskStatus.TODO;
 
-    @Column(name = "priority", nullable = false)
     @Min(1) @Max(5)
     private short priority = 3;
 
-    @Column(name = "created_at")
     private Instant createdAt;
 
-    @Column(name = "due_date")
     private LocalDate dueDate;
 
     public CreateTaskRequest(String title, String content, TaskStatus status, short priority, LocalDate dueDate){
